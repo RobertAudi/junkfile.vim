@@ -11,9 +11,6 @@ let g:junkfile#directory =
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
-function! junkfile#init() abort
-endfunction
-
 function! junkfile#open(prefix, ...) range abort
   let use_range = a:lastline - a:firstline > 0
   if use_range

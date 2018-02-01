@@ -13,8 +13,6 @@ Interface		|junkfile-interface|
   Commands		  |junkfile-commands|
   Variables		  |junkfile-variables|
 Configulation Examples	|junkfile-examples|
-Unite sources		|junkfile-unite-sources|
-Denite sources		|junkfile-denite-sources|
 Changelog		|junkfile-changelog|
 
 ==============================================================================
@@ -29,10 +27,6 @@ USAGE						*junkfile-usage*
 Create junk file:
 >
 	:JunkfileOpen
-<
-Note: To use the unite.vim interface, run this command (requires |unite.vim|):
->
-	:Unite junkfile/new junkfile -start-insert
 <
 ==============================================================================
 INTERFACE					*junkfile-interface*
@@ -76,33 +70,6 @@ EXAMPLES					*junkfile-examples*
 	command! -nargs=0 JunkfileDiary call junkfile#open_immediately(
 	\ strftime('%Y-%m-%d.md'))
 <
-==============================================================================
-UNITE SOURCES					*junkfile-unite-sources*
-
-Here let me explain about a source for |unite| provided in junkfile.
-
-					*junkfile-unite-source-junkfile*
-junkfile
-		Nominates junk files as a candidate.
-
-					*junkfile-unite-source-junkfile/new*
-junkfile/new
-		Create new junk file.
->
-		:Unite -start-insert junkfile/new junk/file
-<
-Actions of each sources
-junkfile				*unite-action-source-junkfile*
-	delete		Delete junk files
-
-==============================================================================
-DENITE SOURCES					*junkfile-denite-sources*
-
-					*junkfile-denite-source-junkfile*
-junkfile
-		Nominates junk files as a candidate.
-		If the args 0 is "new", it will create new junk file.
-
 ==============================================================================
 CHANGELOG					*junkfile-changelog*
 
