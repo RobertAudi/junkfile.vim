@@ -44,7 +44,7 @@ function! junkfile#open_immediately(filename) abort
 endfunction
 
 function! junkfile#_open(filename) abort
-  let filename = g:junkfile#directory . strftime('/%Y/%m/') . a:filename
+  let filename = g:junkfile#directory . strftime('/%Y/%m/%H/%M/') . a:filename
   let junk_dir = fnamemodify(filename, ':h')
   if !isdirectory(junk_dir)
     call mkdir(junk_dir, 'p')
