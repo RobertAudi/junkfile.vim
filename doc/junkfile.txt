@@ -37,6 +37,12 @@ FUNCTIONS 					*junkfile-functions*
 junkfile#open({prefix})				*junkfile#open()*
 		Open {prefix} junk file.
 
+junkfile#split_open({prefix})				*junkfile#split_open()*
+		Open {prefix} junk file in a new horizontal split.
+
+junkfile#vsplit_open({prefix})				*junkfile#vsplit_open()*
+		Open {prefix} junk file in a new vertical split.
+
 junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 		Open {filename} junk file immediately.
 		It is useful to edit memo or diary file.
@@ -46,6 +52,14 @@ COMMANDS 					*junkfile-commands*
 
 :JunkfileOpen [{postfix}]
 		Creates new junk file.
+		If {postfix} is given, it will open junk file immediately.
+
+:JunkfileSplitOpen [{postfix}]
+		Creates new junk file in a horizontal split.
+		If {postfix} is given, it will open junk file immediately.
+
+:JunkfileVsplitOpen [{postfix}]
+		Creates new junk file in a vertical split.
 		If {postfix} is given, it will open junk file immediately.
 
 ------------------------------------------------------------------------------

@@ -11,41 +11,93 @@ let g:junkfile#directory =
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
+function! s:get_filename(prefix) abort
+  let l:prefix = ''
+  let l:postfix = ''
+
+  if a:prefix ==# ''
+    let l:prefix = strftime('%Y-%m-%d-%H%M%S') . '.junkfile'
+    let l:postfix = fnamemodify(bufname('%'), ':e')
+  else
+    let l:prefix = fnamemodify(a:prefix, ':r')
+    let l:postfix = fnamemodify(a:prefix, ':e')
+    if l:postfix ==# ''
+      let l:postfix = fnamemodify(bufname('%'), ':e')
+    endif
+  endif
+
+  if l:postfix ==# ''
+    let l:postfix = 'txt'
+  endif
+  return input('Junk Code: ', l:prefix . '.' . l:postfix)
+endfunction
+
+function! s:open_junkfile(filename, edit_command) abort
+  let l:filename = g:junkfile#directory . strftime('/%Y/%m/%H/%M/') . a:filename
+  let l:junk_dir = fnamemodify(l:filename, ':h')
+  if !isdirectory(l:junk_dir)
+    call mkdir(l:junk_dir, 'p')
+  endif
+
+  execute a:edit_command fnameescape(l:filename)
+endfunction
+
+function! s:append_lines(lines) abort
+  call append(0, a:lines)
+  " not sure why but an extra blank line seems to always be added
+  silent! normal "_dd
+  silent! write
+endfunction
+
 function! junkfile#open(prefix, ...) range abort
-  let use_range = a:lastline - a:firstline > 0
-  if use_range
-    let saved_lines = getline(a:firstline, a:lastline)
+  let l:use_range = a:lastline - a:firstline > 0
+  if l:use_range
+    let l:saved_lines = getline(a:firstline, a:lastline)
   endif
 
-  let postfix = get(a:000, 0, '')
-  let postfix_candidate = !use_range || postfix != '' ?
-        \ '' : expand('%:e')
-  let filename = postfix == '' ?
-        \ input('Junk Code: ', a:prefix . postfix_candidate) : a:prefix . postfix
+  let l:filename = s:get_Filename(a:prefix)
 
-  if filename != ''
-    call junkfile#_open(filename)
+  if l:filename !=# ''
+    call s:open_junkfile(l:filename, g:junkfile#edit_command)
   endif
 
-  if use_range
-    call append(0, saved_lines)
-    "not sure why but an extra blank line seems to always be added
-    silent! normal "_dd
-    write
+  if l:use_range
+    call s:append_lines(l:saved_lines)
   endif
-
 endfunction
 
 function! junkfile#open_immediately(filename) abort
-  call junkfile#_open(a:filename)
+  call s:open_junkfile(a:filename, g:junkfile#edit_command)
 endfunction
 
-function! junkfile#_open(filename) abort
-  let filename = g:junkfile#directory . strftime('/%Y/%m/%H/%M/') . a:filename
-  let junk_dir = fnamemodify(filename, ':h')
-  if !isdirectory(junk_dir)
-    call mkdir(junk_dir, 'p')
+function! junkfile#vsplit_open(prefix, ...) range abort
+  let l:use_range = a:lastline - a:firstline > 0
+  if l:use_range
+    let l:saved_lines = getline(a:firstline, a:lastline)
   endif
 
-  execute g:junkfile#edit_command fnameescape(filename)
+  let l:filename = s:get_filename(a:prefix)
+  if l:filename !=# ''
+    call s:open_junkfile(l:filename, 'vsplit')
+  endif
+
+  if l:use_range
+    call s:append_lines(l:saved_lines)
+  endif
+endfunction
+
+function! junkfile#split_open(prefix, ...) range abort
+  let l:use_range = a:lastline - a:firstline > 0
+  if l:use_range
+    let l:saved_lines = getline(a:firstline, a:lastline)
+  endif
+
+  let l:filename = s:get_filename(a:prefix)
+  if l:filename !=# ''
+    call s:open_junkfile(l:filename, 'split')
+  endif
+
+  if l:use_range
+    call s:append_lines(l:saved_lines)
+  endif
 endfunction
