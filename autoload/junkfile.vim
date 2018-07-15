@@ -55,7 +55,7 @@ function! junkfile#open(prefix, ...) range abort
     let l:saved_lines = getline(a:firstline, a:lastline)
   endif
 
-  let l:filename = s:get_Filename(a:prefix)
+  let l:filename = s:get_filename(a:prefix)
 
   if l:filename !=# ''
     call s:open_junkfile(l:filename, g:junkfile#edit_command)
