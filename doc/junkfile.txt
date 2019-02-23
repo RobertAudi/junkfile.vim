@@ -50,11 +50,11 @@ COMMANDS 					*junkfile-commands*
 		Creates new junk file.
 		If {postfix} is given, it will open junk file immediately.
 
-:JunkfileSplitOpen [{postfix}]
+:JunkfileSplit [{postfix}]
 		Creates new junk file in a horizontal split.
 		If {postfix} is given, it will open junk file immediately.
 
-:JunkfileVsplitOpen [{postfix}]
+:JunkfileVsplit [{postfix}]
 		Creates new junk file in a vertical split.
 		If {postfix} is given, it will open junk file immediately.
 
@@ -86,6 +86,8 @@ CHANGELOG					*junkfile-changelog*
 2019-02-23
 - Update `junkfile#open()` to take a second argument for the editor command
 - Remove `junkfile#vsplit_open()` and `junkfile#split_open()`
+- Rename `:JunkfileVsplitOpen` to `:JunkfileVsplit`
+- Rename `:JunkfileSplitOpen` to `:JunkfileSplit`
 
 2018-02-05
 - Add `junkfile#vsplit_open()` and `junkfile#split_open()`

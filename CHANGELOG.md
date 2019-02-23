@@ -3,6 +3,8 @@
 - Refactor the code to remove duplication. _(by **Robert Audi**)_
   - The `junkfile#open()` now accepts an optional "editor command" as second parameter.
   - Remove the `junkfile#vsplit_open()` and `junkfile#split_open()`.
+- Rename `:JunkfileVsplitOpen` to `:JunkfileVsplit` _(by **Robert Audi**)_
+- Rename `:JunkfileSplitOpen` to `:JunkfileSplit` _(by **Robert Audi**)_
 
 ### 2018-02-05
 
