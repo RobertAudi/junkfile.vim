@@ -60,9 +60,11 @@ function! junkfile#open(prefix, ...) range abort
 
   let l:filename = s:get_filename(a:prefix)
 
-  if l:filename !=# ''
-    call s:open_junkfile(l:filename, l:edit_command)
+  if empty(l:filename)
+    return
   endif
+
+  call s:open_junkfile(l:filename, l:edit_command)
 
   if l:use_range
     call s:append_lines(l:saved_lines)
