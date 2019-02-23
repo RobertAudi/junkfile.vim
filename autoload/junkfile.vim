@@ -6,8 +6,9 @@
 
 let g:junkfile#directory =
       \ get(g:, 'junkfile#directory',
-      \  expand($XDG_CACHE_HOME != '' ?
+      \  expand($XDG_CACHE_HOME !=# '' ?
       \   $XDG_CACHE_HOME . '/junkfile' : '~/.cache/junkfile'))
+
 let g:junkfile#edit_command =
       \ get(g:, 'junkfile#edit_command', 'edit')
 
@@ -45,7 +46,7 @@ endfunction
 function! s:append_lines(lines) abort
   call append(0, a:lines)
   " not sure why but an extra blank line seems to always be added
-  silent! normal "_dd
+  silent! delete _
   silent! write
 endfunction
 
