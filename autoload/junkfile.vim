@@ -41,9 +41,17 @@ function! s:open_junkfile(filename, edit_command) abort
   endif
 
   execute a:edit_command fnameescape(l:filename)
+
+  let b:Junkfile = bufnr('%')
+
+  return b:Junkfile
 endfunction
 
 function! s:append_lines(lines) abort
+  if !exists('b:Junkfile') || bufnr('%') != b:Junfile
+    throw 'Fatal Error: Not inside junkfile!'
+  endif
+
   call append(0, a:lines)
   " not sure why but an extra blank line seems to always be added
   silent! delete _
