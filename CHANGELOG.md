@@ -5,6 +5,7 @@
   - Remove the `junkfile#vsplit_open()` and `junkfile#split_open()`.
 - Rename `:JunkfileVsplitOpen` to `:JunkfileVsplit` _(by **Robert Audi**)_
 - Rename `:JunkfileSplitOpen` to `:JunkfileSplit` _(by **Robert Audi**)_
+- Add `:JunkfileEdit` and `:JunkfileTabEdit` _(by **Robert Audi**)_
 
 ### 2018-02-05
 

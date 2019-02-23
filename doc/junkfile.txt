@@ -47,7 +47,11 @@ junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 COMMANDS 					*junkfile-commands*
 
 :JunkfileOpen [{postfix}]
-		Creates new junk file.
+		Creates new junk file using |g:junkfile#edit_command|.
+		If {postfix} is given, it will open junk file immediately.
+
+:JunkfileEdit [{postfix}]
+		Creates new junk file in the current window.
 		If {postfix} is given, it will open junk file immediately.
 
 :JunkfileSplit [{postfix}]
@@ -56,6 +60,10 @@ COMMANDS 					*junkfile-commands*
 
 :JunkfileVsplit [{postfix}]
 		Creates new junk file in a vertical split.
+		If {postfix} is given, it will open junk file immediately.
+
+:JunkfileTabEdit [{postfix}]
+		Creates new junk file in a new tab.
 		If {postfix} is given, it will open junk file immediately.
 
 ------------------------------------------------------------------------------
@@ -88,6 +96,7 @@ CHANGELOG					*junkfile-changelog*
 - Remove `junkfile#vsplit_open()` and `junkfile#split_open()`
 - Rename `:JunkfileVsplitOpen` to `:JunkfileVsplit`
 - Rename `:JunkfileSplitOpen` to `:JunkfileSplit`
+- Add `:JunkfileEdit` and `:JunkfileTabEdit`
 
 2018-02-05
 - Add `junkfile#vsplit_open()` and `junkfile#split_open()`
