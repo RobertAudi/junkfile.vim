@@ -21,7 +21,7 @@ Usage
 
 Create junk file:
 
-```viml
+```vim
 :JunkfileOpen
 ```
 
@@ -30,48 +30,50 @@ Interface
 
 ### Functions
 
-Open `{prefix}` junk file.
+Open `{prefix}` junk file using `{edit-command}`. If `{edit-command}` is omitted, `g:junkfile#edit_command` is used instead.
 
-```viml
-junkfile#open({prefix})
-```
-
-Open `{prefix}` junk file in a new horizontal split.
-
-```viml
-junkfile#split_open({prefix})
-```
-
-Open `{prefix}` junk file in a new vertical split.
-
-```viml
-junkfile#vsplit_open({prefix})
+```vim
+junkfile#open({prefix} [, {edit-command}])
 ```
 
 Open `{filename}` junk file immediately. It is useful to edit memo or diary file.
 
-```viml
+```vim
 junkfile#open_immediately({filename})
 ```
 
 ### Commands
 
-Creates new junk file. If `{postfix}` is given, it will open junk file immediately.
+For all the commands, if `{postfix}` is given, it will open junk file immediately.
 
-```viml
+Creates new junk file using `g:junkfile#edit_command`.
+
+```vim
 :JunkfileOpen [{postfix}]
+```
+
+Creates new junk file in the current window.
+
+```vim
+:JunkfileEdit [{postfix}]
 ```
 
 Creates new junk file in a horizontal split.
 
-```viml
-:JunkfileSplitOpen [{postfix}]
+```vim
+:JunkfileSplit [{postfix}]
 ```
 
 Creates new junk file in a vertical split.
 
-```viml
-:JunkfileVsplitOpen [{postfix}]
+```vim
+:JunkfileVsplit [{postfix}]
+```
+
+Creates new junk file in a new tab.
+
+```vim
+:JunkfileTabEdit [{postfix}]
 ```
 
 ### Variables
@@ -79,21 +81,21 @@ Creates new junk file in a vertical split.
 Specifies the directory where *junkfile* writes junk files.
 *Defaults to* `~/.cache/junkfile`.
 
-```viml
+```vim
 g:junkfile#directory
 ```
 
 Specifies buffer open command when `:JunkfileOpen`.
 *Defaults to* `edit`.
 
-```viml
+```vim
 g:junkfile#edit_command
 ```
 
 Examples
 --------
 
-```viml
+```vim
 command! -nargs=0 JunkfileDay call junkfile#open_immediately(strftime('%Y-%m-%d.txt'))
 command! -nargs=0 JunkfileDiary call junkfile#open_immediately(strftime('%Y-%m-%d.md'))
 ```
@@ -108,6 +110,8 @@ Shougo Matsushita – [GitHub][Shougo]
 ### Contributors
 
 - Rick Koike – [GitHub][ssig33]
+- Robert Audi – [GitHub][RobertAudi]
 
 [Shougo]: https://github.com/Shougo
 [ssig33]: https://github.com/ssig33
+[RobertAudi]: https://github.com/RobertAudi
