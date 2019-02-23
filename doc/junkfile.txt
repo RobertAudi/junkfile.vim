@@ -34,14 +34,10 @@ INTERFACE					*junkfile-interface*
 ------------------------------------------------------------------------------
 FUNCTIONS 					*junkfile-functions*
 
-junkfile#open({prefix})				*junkfile#open()*
-		Open {prefix} junk file.
-
-junkfile#split_open({prefix})				*junkfile#split_open()*
-		Open {prefix} junk file in a new horizontal split.
-
-junkfile#vsplit_open({prefix})				*junkfile#vsplit_open()*
-		Open {prefix} junk file in a new vertical split.
+junkfile#open({prefix} [, {edit-command}])	*junkfile#open()*
+		Open {prefix} junk file using {edit-command}.
+		If {edit-command} is omitted, |g:junkfile#edit_command|
+		is used instead.
 
 junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 		Open {filename} junk file immediately.

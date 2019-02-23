@@ -50,6 +50,8 @@ function! s:append_lines(lines) abort
 endfunction
 
 function! junkfile#open(prefix, ...) range abort
+  let l:edit_command = a:0 ? a:1 : g:junkfile#edit_command
+
   let l:use_range = a:lastline - a:firstline > 0
   if l:use_range
     let l:saved_lines = getline(a:firstline, a:lastline)
@@ -58,7 +60,7 @@ function! junkfile#open(prefix, ...) range abort
   let l:filename = s:get_filename(a:prefix)
 
   if l:filename !=# ''
-    call s:open_junkfile(l:filename, g:junkfile#edit_command)
+    call s:open_junkfile(l:filename, l:edit_command)
   endif
 
   if l:use_range
@@ -68,36 +70,4 @@ endfunction
 
 function! junkfile#open_immediately(filename) abort
   call s:open_junkfile(a:filename, g:junkfile#edit_command)
-endfunction
-
-function! junkfile#vsplit_open(prefix, ...) range abort
-  let l:use_range = a:lastline - a:firstline > 0
-  if l:use_range
-    let l:saved_lines = getline(a:firstline, a:lastline)
-  endif
-
-  let l:filename = s:get_filename(a:prefix)
-  if l:filename !=# ''
-    call s:open_junkfile(l:filename, 'vsplit')
-  endif
-
-  if l:use_range
-    call s:append_lines(l:saved_lines)
-  endif
-endfunction
-
-function! junkfile#split_open(prefix, ...) range abort
-  let l:use_range = a:lastline - a:firstline > 0
-  if l:use_range
-    let l:saved_lines = getline(a:firstline, a:lastline)
-  endif
-
-  let l:filename = s:get_filename(a:prefix)
-  if l:filename !=# ''
-    call s:open_junkfile(l:filename, 'split')
-  endif
-
-  if l:use_range
-    call s:append_lines(l:saved_lines)
-  endif
 endfunction
