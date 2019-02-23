@@ -46,23 +46,23 @@ junkfile#open_immediately({filename})		*junkfile#open_immediately()*
 ------------------------------------------------------------------------------
 COMMANDS 					*junkfile-commands*
 
-:JunkfileOpen [{postfix}]
+:JunkfileOpen [{postfix}]			*:JunkfileOpen*
 		Creates new junk file using |g:junkfile#edit_command|.
 		If {postfix} is given, it will open junk file immediately.
 
-:JunkfileEdit [{postfix}]
+:JunkfileEdit [{postfix}]			*:JunkfileEdit*
 		Creates new junk file in the current window.
 		If {postfix} is given, it will open junk file immediately.
 
-:JunkfileSplit [{postfix}]
+:JunkfileSplit [{postfix}]			*:JunkfileSplit*
 		Creates new junk file in a horizontal split.
 		If {postfix} is given, it will open junk file immediately.
 
-:JunkfileVsplit [{postfix}]
+:JunkfileVsplit [{postfix}]			*:JunkfileVsplit*
 		Creates new junk file in a vertical split.
 		If {postfix} is given, it will open junk file immediately.
 
-:JunkfileTabEdit [{postfix}]
+:JunkfileTabEdit [{postfix}]			*:JunkfileTabEdit*
 		Creates new junk file in a new tab.
 		If {postfix} is given, it will open junk file immediately.
 
