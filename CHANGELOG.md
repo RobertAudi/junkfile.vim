@@ -1,7 +1,14 @@
-### 2018-02-01
+### 2019-02-23
 
-- Add a [CHANGELOG](CHANGELOG.md) file. _(by **Robert Audi**)_
-- Include documentation from the [help file](doc/junkfile.txt) inside of the [README](README.md). _(by **Robert Audi**)_
+- Refactor the code to remove duplication. _(by **Robert Audi**)_
+  - The `junkfile#open()` now accepts an optional "editor command" as second parameter.
+  - Remove the `junkfile#vsplit_open()` and `junkfile#split_open()`.
+
+### 2018-02-05
+
+- Add commands/functions to open junk files in splits _(by **Robert Audi**)_
+  - `junkfile#vsplit_open({prefix})` and `:JunkfileVsplitOpen` to open a junk file in a vertical split
+  - `junkfile#split_open({prefix})` and `:JunkfileSplitOpen` to open a junk file in a horizontal split
 
 ### 2016-08-05
 
