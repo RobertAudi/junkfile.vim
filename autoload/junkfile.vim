@@ -48,7 +48,7 @@ function! s:open_junkfile(filename, edit_command) abort
 endfunction
 
 function! s:append_lines(lines) abort
-  if !exists('b:Junkfile') || bufnr('%') != b:Junfile
+  if !exists('b:Junkfile') || bufnr('%') != b:Junkfile
     throw 'Fatal Error: Not inside junkfile!'
   endif
 
