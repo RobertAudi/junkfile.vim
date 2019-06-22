@@ -6,15 +6,15 @@ junkfile.vim
 Table of Contents
 -----------------
 
-* [Usage](#usage)
-* [Interface](#interface)
-  * [Functions](#functions)
-  * [Commands](#commands)
-  * [Variables](#variables)
-* [Examples](#examples)
-* [Credits](#credits)
-  * [Author](#author)
-  * [Contributors](#contributors)
+- [Usage](#usage)
+- [Interface](#interface)
+  - [Functions](#functions)
+  - [Commands](#commands)
+  - [Variables](#variables)
+- [Examples](#examples)
+- [Credits](#credits)
+  - [Author](#author)
+  - [Contributors](#contributors)
 
 Usage
 -----
@@ -46,51 +46,20 @@ junkfile#open_immediately({filename})
 
 For all the commands, if `{postfix}` is given, it will open junk file immediately.
 
-Creates new junk file using `g:junkfile#edit_command`.
-
-```vim
-:JunkfileOpen [{postfix}]
-```
-
-Creates new junk file in the current window.
-
-```vim
-:JunkfileEdit [{postfix}]
-```
-
-Creates new junk file in a horizontal split.
-
-```vim
-:JunkfileSplit [{postfix}]
-```
-
-Creates new junk file in a vertical split.
-
-```vim
-:JunkfileVsplit [{postfix}]
-```
-
-Creates new junk file in a new tab.
-
-```vim
-:JunkfileTabEdit [{postfix}]
-```
+| Command                        | Description                                            |
+|:-------------------------------|:-------------------------------------------------------|
+| `:JunkfileOpen [{postfix}]`    | Creates new junk file using `g:junkfile#edit_command`. |
+| `:JunkfileEdit [{postfix}]`    | Creates new junk file in the current window.           |
+| `:JunkfileSplit [{postfix}]`   | Creates new junk file in a horizontal split.           |
+| `:JunkfileVsplit [{postfix}]`  | Creates new junk file in a vertical split.             |
+| `:JunkfileTabEdit [{postfix}]` | Creates new junk file in a new tab.                    |
 
 ### Variables
 
-Specifies the directory where *junkfile* writes junk files.
-*Defaults to* `~/.cache/junkfile`.
-
-```vim
-g:junkfile#directory
-```
-
-Specifies buffer open command when `:JunkfileOpen`.
-*Defaults to* `edit`.
-
-```vim
-g:junkfile#edit_command
-```
+| Variable                  | Description                                                                                       |
+|:--------------------------|:--------------------------------------------------------------------------------------------------|
+| `g:junkfile#directory`    | Specifies the directory where *junkfile* writes junk files.<br>*Defaults to* `~/.cache/junkfile`. |
+| `g:junkfile#edit_command` | Specifies buffer open command when `:JunkfileOpen`.<br>*Defaults to* `edit`.                      |
 
 Examples
 --------
