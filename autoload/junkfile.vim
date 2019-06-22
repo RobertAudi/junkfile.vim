@@ -89,3 +89,20 @@ endfunction
 function! junkfile#open_immediately(filename) abort
   call s:open_junkfile(a:filename, g:junkfile#edit_command)
 endfunction
+
+function! junkfile#save(prefix, ...) abort
+  let l:filename = s:get_filename(a:prefix)
+
+  if empty(l:filename)
+    return
+  endif
+
+  let l:junk_dir = s:make_junk_tree()
+  let l:filepath = l:junk_dir . l:filename
+
+  execute 'write! ' . l:filepath
+
+  let l:edit_command = a:0 ? a:1 : g:junkfile#edit_command
+
+  call s:open_junkfile(l:filename, l:edit_command)
+endfunction

@@ -44,15 +44,20 @@ junkfile#open_immediately({filename})
 
 ### Commands
 
-For all the commands, if `{postfix}` is given, it will open junk file immediately.
+For all the commands except the `Junkfile*Save` commands, if `{postfix}` is given, it will open junk file immediately.
 
-| Command                        | Description                                            |
-|:-------------------------------|:-------------------------------------------------------|
-| `:JunkfileOpen [{postfix}]`    | Creates new junk file using `g:junkfile#edit_command`. |
-| `:JunkfileEdit [{postfix}]`    | Creates new junk file in the current window.           |
-| `:JunkfileSplit [{postfix}]`   | Creates new junk file in a horizontal split.           |
-| `:JunkfileVsplit [{postfix}]`  | Creates new junk file in a vertical split.             |
-| `:JunkfileTabEdit [{postfix}]` | Creates new junk file in a new tab.                    |
+| Command                        | Description                                                                   |
+|:-------------------------------|:------------------------------------------------------------------------------|
+| `:JunkfileOpen [{postfix}]`    | Creates new junk file using `g:junkfile#edit_command`.                        |
+| `:JunkfileEdit [{postfix}]`    | Creates new junk file in the current window.                                  |
+| `:JunkfileSplit [{postfix}]`   | Creates new junk file in a horizontal split.                                  |
+| `:JunkfileVsplit [{postfix}]`  | Creates new junk file in a vertical split.                                    |
+| `:JunkfileTabEdit [{postfix}]` | Creates new junk file in a new tab.                                           |
+| `:JunkfileSave`                | Save the current buffer to a junk file and open it in the current buffer.     |
+| `:JunkfileSplitSave`           | Save the current buffer to a junk file and open it in a new horizontal split. |
+| `:JunkfileVsplitSave`          | Save the current buffer to a junk file and open it in a new vertical split.   |
+| `:JunkfileTabSave`             | Save the current buffer to a junk file and open it in a new tab.              |
+
 
 ### Variables
 

@@ -1,3 +1,12 @@
+### 2019-06-22
+
+- Add the `junkfile#save()` function to save the current buffer to a new file. _(by **Robert Audi**)_
+- Add commands to save the current buffer in a junk file: _(by **Robert Audi**)_
+  - `JunkfileSave`
+  - `JunkfileVsplitSave`
+  - `JunkfileSplitSave`
+  - `JunkfileTabSave`
+
 ### 2019-02-23
 
 - Refactor the code to remove duplication. _(by **Robert Audi**)_

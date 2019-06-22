@@ -47,6 +47,13 @@ junkfile#open_immediately({filename})
                 Open {filename} junk file immediately.
                 It is useful to edit memo or diary file.
 
+                                                               *junkfile#save()*
+junkfile#save({prefix} [, {edit-command}])
+                Save current buffer in {prefix} junk file and open it
+                using {edit-command}.
+                If {edit-command} is omitted, |g:junkfile#edit_command|
+                is used instead.
+
 ------------------------------------------------------------------------------
 COMMANDS                                                     *junkfile-commands*
 
@@ -75,6 +82,26 @@ COMMANDS                                                     *junkfile-commands*
                 Creates new junk file in a new tab.
                 If {postfix} is given, it will open junk file immediately.
 
+                                                                 *:JunkfileSave*
+:JunkfileSave
+                Save the current buffer to a junk file and open it in
+                the current buffer.
+
+                                                            *:JunkfileSplitSave*
+:JunkfileSplitSave
+                Save the current buffer to a junk file and open it in
+                a new horizontal split.
+
+                                                           *:JunkfileVsplitSave*
+:JunkfileVsplitSave
+                Save the current buffer to a junk file and open it in
+                a new vertical split.
+
+                                                              *:JunkfileTabSave*
+:JunkfileTabSave
+                Save the current buffer to a junk file and open it in
+                a new tab.
+
 ------------------------------------------------------------------------------
 VARIABLES                                                   *junkfile-variables*
 
@@ -102,6 +129,14 @@ EXAMPLES                                                     *junkfile-examples*
 
 ==============================================================================
 CHANGELOG                                                   *junkfile-changelog*
+
+2019-06-22
+- Add `junkfile#save()`
+- Add commands to save the current buffer in a junk file:
+  - `JunkfileSave`
+  - `JunkfileVsplitSave`
+  - `JunkfileSplitSave`
+  - `JunkfileTabSave`
 
 2019-02-23
 - Update `junkfile#open()` to take a second argument for the editor command
