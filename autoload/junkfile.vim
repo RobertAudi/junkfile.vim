@@ -33,12 +33,19 @@ function! s:get_filename(prefix) abort
   return input('Junk Code: ', l:prefix . '.' . l:postfix)
 endfunction
 
-function! s:open_junkfile(filename, edit_command) abort
-  let l:filename = g:junkfile#directory . strftime('/%Y/%m/%H/%M/') . a:filename
-  let l:junk_dir = fnamemodify(l:filename, ':h')
+function! s:make_junk_tree() abort
+  let l:junk_dir = g:junkfile#directory . strftime('/%Y/%m/%H/%M/')
+
   if !isdirectory(l:junk_dir)
     call mkdir(l:junk_dir, 'p')
   endif
+
+  return l:junk_dir
+endfunction
+
+function! s:open_junkfile(filename, edit_command) abort
+  let l:junk_dir = s:make_junk_tree()
+  let l:filename = l:junk_dir . a:filename
 
   execute a:edit_command fnameescape(l:filename)
 
@@ -59,17 +66,17 @@ function! s:append_lines(lines) abort
 endfunction
 
 function! junkfile#open(prefix, ...) range abort
+  let l:filename = s:get_filename(a:prefix)
+
+  if empty(l:filename)
+    return
+  endif
+
   let l:edit_command = a:0 ? a:1 : g:junkfile#edit_command
 
   let l:use_range = a:lastline - a:firstline > 0
   if l:use_range
     let l:saved_lines = getline(a:firstline, a:lastline)
-  endif
-
-  let l:filename = s:get_filename(a:prefix)
-
-  if empty(l:filename)
-    return
   endif
 
   call s:open_junkfile(l:filename, l:edit_command)
