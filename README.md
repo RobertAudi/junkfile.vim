@@ -42,6 +42,12 @@ Open `{filename}` junk file immediately. It is useful to edit memo or diary file
 junkfile#open_immediately({filename})
 ```
 
+Save current buffer in `{prefix}` junk file and open it using `{edit-command}`. If `{edit-command}` is omitted, `g:junkfile#edit_command` is used instead.
+
+```vim
+junkfile#save({prefix} [, {edit-command}])
+```
+
 ### Commands
 
 For all the commands except the `Junkfile*Save` commands, if `{postfix}` is given, it will open junk file immediately.
